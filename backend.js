@@ -80,7 +80,10 @@ app.post('/users', (req, res) => {
     var randId = randomGenerator(); 
     userToAdd.id = randId; 
     addUser(userToAdd);
-    res.status(201).end();
+     
+    res.status(201).send(userToAdd).end();
+    // console.log(userToAdd.name, " ", userToAdd.job, " ", userToAdd.id);
+   
 });
 
 function randomGenerator(){
