@@ -77,9 +77,22 @@ const findUserByName = (name) => {
 
 app.post('/users', (req, res) => {
     const userToAdd = req.body;
+    var randId = randomGenerator(); 
+    userToAdd.id = randId; 
     addUser(userToAdd);
     res.status(201).end();
 });
+
+function randomGenerator(){
+    var ret = ''; 
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var index; 
+    for (var i = 0; i < 6; i++){
+        index = Math.floor(Math.random() * characters.length); 
+        ret += characters.substring(index, index+1); 
+    }
+    return ret;
+}
 
 function addUser(user){
     users['users_list'].push(user);
