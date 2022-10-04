@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 5000;
 const cors = require('cors');
+const res = require('express/lib/response');
 
 app.use(cors());
 app.use(express.json());
@@ -77,7 +78,7 @@ const findUserByName = (name) => {
 app.post('/users', (req, res) => {
     const userToAdd = req.body;
     addUser(userToAdd);
-    res.status(200).end();
+    res.status(201).end();
 });
 
 function addUser(user){
